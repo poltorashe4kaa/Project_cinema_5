@@ -1,0 +1,262 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{movie.name}}</h1>
+<div class="left-ads-display col-lg-8">
+        <div class="row">
+           <div class="desc1-left col-md-6">
+{% if movie_shots %}
+
+ <style>
+ * {box-sizing: border-box;}
+body {font-family: Verdana, sans-serif;}
+.mySlides {display: none;}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 2000px;
+  max-height: 2000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #ecce80;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #c67f16;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 5s;
+  animation-name: fade;
+  animation-duration: 5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+
+
+.customers-wrap {
+margin-bottom: 90px;
+}
+.customers-wrap::after {
+content: '';
+display: table;
+clear: both;
+}
+.customers-block {
+display: inline-block;
+text-align: center;
+width: 25%;
+float: left;
+}
+.customers-img {
+width: 261px;
+height: 261px;
+margin-bottom: 25px;
+float: left;
+}
+
+  </style>
+ <!-- Здесь содержится весь отображаемый контент: -->
+  <body>
+<div class="slideshow-container">
+<!---  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+<div class="mySlides fade">
+  <!--<div class="numbertext">3 / 3</div>-->
+  <img src="media/{{movie.image}}" style="width:100%">
+  <div class="text"><h1>{{movie.name}}</h1></div>
+</div>
+
+
+{% for movie_shot in movie_shots %}
+<div class="mySlides fade">
+  <!--<div class="numbertext">3 / 3</div>-->
+  <img src="media/{{movie_shot.image}}" style="width:100%">
+    <!--<div class="text"><h1> <font color='blue' >{{movie_shot.description}}</font></h1></div>-->
+</div>
+{% endfor %}
+
+
+
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot"></span>
+    {% for movie_shot in movie_shots %}
+  <span class="dot"></span>
+    {% endfor %}
+</div>
+<script>
+var slideIndex = 0;
+var i;
+var slides = document.getElementsByClassName("mySlides");
+var dots = document.getElementsByClassName("dot");
+showSlides();
+
+function showSlides()
+{
+      for (i = 0; i < slides.length; i++)
+      {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length)
+      {
+        slideIndex = 1
+      }
+      for (i = 0; i < dots.length; i++)
+      {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+
+          slides[slideIndex-1].style.display = "block";
+          dots[slideIndex-1].className += " active";
+          setTimeout(showSlides, 5000); // Change image every 5 seconds
+}
+</script>
+
+
+{% else %}
+<img src="media/{{movie.image}}" class="img-fluid" alt="">
+{% endif %}
+           </div>
+
+            <div class="desc1-right col-md-6 pl-lg-4">
+                <!--<h3 class="editContent">
+                    {{ movie.name }}
+                </h3>-->
+                <h5 class="editContent" align="left"></h5>
+                <p align="left">
+
+
+                        <span> <p align="left"> <b>
+                            Год:</b> {{ movie.year }}
+                        </p></span>
+
+                    <li style="list-style: none">
+                        <span> <p align="left"> <b>Страна:</b>
+                            {{movie.country}}
+                        </p></span>
+                    </li>
+                    <li style="list-style: none">
+                        <span> <p align="left"> <b>Режиссер:</b>
+                         {% for director in movie.director.all %}
+                        <a href="{{director.get_absolute_url}}">
+                                    {{ director.name }}
+                            </a>
+                        {% endfor %}
+                        </p>
+                        </span>
+                    </li>
+                    <li style="list-style: none"><span> <p align="left"> <b>Актеры (в главных ролях):</b>
+                        {% for actor in movie.actors.all %}
+                            <a href="{{actor.get_absolute_url}}">
+                                    {{ actor.name }}
+                            </a>
+                        {% endfor %}
+
+                    </p></span>
+                    </li>
+                    <li style="list-style: none"><span>
+                        <p align="left">
+                        <b>Жанр:</b>
+                        </p>
+
+                                    </span>
+                    </li>
+                        <form action="{% url 'add_rating' %}" method="post" name="rating">
+                            <p align="left">
+                            <b>Рейтинг:</b>
+                            {% csrf_token %}
+
+                            <input type="hidden" value="{{ movie.ip }}" name="movie">
+                            <span class="rating">
+                                {% for k, v in star_form.fields.star.choices %}
+                                    <input id="rating{{ v }}" type="radio" name="star"
+                                           value="{{ k }}">
+                                    <label for="rating{{ v }}">{{ k }}</label>
+                                {% endfor %}
+                            </span>
+
+
+
+
+                            <span class="editContent">4.0</span>
+                            </p>
+                        </form>
+                    </li>
+
+                </p>
+<div class="row sub-para-w3layouts mt-5">
+            <h3 class="shop-sing editContent">
+                <p align="centre">
+                О фильме
+                </p>
+            </h3>
+            <!--
+            <p>
+                {% for image in movie.movieshots_set.all %}
+                    <img src="{{ image.image.url }}" class="img-movie-shots "
+                         alt="{{ image.description }}">
+                {% endfor %}
+            </p>
+            -->
+            <p class="editContent" align="justify">
+                {{ movie.description|safe }}
+            </p>
+        </div>
+
+
+
+<h1></h1>
+<a href="watching_a_movie {{movie.name}}">Перейти к просмотру</a>>
+
+{% endblock %}

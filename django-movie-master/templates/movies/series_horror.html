@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% block title %}
+Сериалы - ужасы
+{% endblock %}
+
+{% block content %}
+
+    <h1>Сериалы - ужасы </h1>
+    <p>QQQQ</p>
+
+
+{% for movie in movies %}
+
+<h3>{{ movie.name }}</h3>
+<img src="media/{{movie.image}}">
+<p>{{ movie.description  }}</p>
+<a href="detailed_description {{movie.name}}">Подробнее</a>>
+<hr>
+
+
+<!-- jQuery -->
+<script src="/examples/vendors/jquery/jquery-3.2.1.min.js"></script>
+<!-- Bootstrap -->
+<script src="/examples/vendors/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+
+{% endfor %}
+
+{% endblock %}

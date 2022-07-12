@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Фильмы
+{% endblock %}
+
+{% block content %}
+    <h1>Фильмы </h1>
+
+
+<div class="dropdown show">
+  <a class="btn btn-warning dropdown-toggle " href="series" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Выбрать жанр
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <div class="d-flex text-center text-white bg-black">
+    <a class="dropdown-item  dropdown-dark gradient-text bg-black" href="films_comedy">Комедии</a>
+    <a class="dropdown-item gradient-text bg-black" href="films_drama">Драмы</a>
+    <a class="dropdown-item gradient-text bg-black" href="films_horror">Ужасы</a>
+    <a class="dropdown-item gradient-text bg-black" href="films_romance">Мелодрамы</a>
+   </div>
+  </div>
+</div>
+
+{% for movie in movies %}
+
+<h3>{{ movie.name }}</h3>
+<img src="media/{{movie.image}}">
+<p>{{ movie.description  }}</p>
+<a href="detailed_description {{movie.name}}">Подробнее</a>>
+<hr>
+
+
+<!-- jQuery -->
+<script src="/examples/vendors/jquery/jquery-3.2.1.min.js"></script>
+<!-- Bootstrap -->
+<script src="/examples/vendors/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+{% endfor %}
+
+{% endblock %}

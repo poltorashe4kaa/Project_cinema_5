@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+
+<div id="hero">
+      <div id="output">
+        <div id="progressBar"></div>
+        <!-- The video player will be added here -->
+      </div>
+      <!-- Statistics -->
+      <div id="status">
+        <div>
+          <code id="numPeers">0 peers</code>
+        </div>
+        <div>
+          <code id="downloaded"></code>
+          of <code id="total"></code>
+          — <span id="remaining"></span><br/>
+          &#x2198;<code id="downloadSpeed">0 b/s</code>
+          / &#x2197;<code id="uploadSpeed">0 b/s</code>
+        </div>
+      </div>
+    </div>
+    <article id="torrentId" data-value="{{ magnet_link }}"></article>
+
+    <!-- Include the latest version of WebTorrent -->
+    <script src="https://cdn.jsdelivr.net/npm/webtorrent@latest/webtorrent.min.js"></script>
+
+    <!--    &lt;!&ndash; Moment is used to show a human-readable remaining time &ndash;&gt;-->
+    <script src="http://momentjs.com/downloads/moment.min.js"></script>
+
+    <script type="text/javascript" src="{% static 'js/torrent.js' %}"></script>
+
+{% endblock %}

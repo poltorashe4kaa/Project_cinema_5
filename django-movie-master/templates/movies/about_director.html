@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+
+
+.customers-wrap {
+margin-bottom: 100px;
+}
+.customers-wrap::after {
+content: '';
+display: table;
+clear: both;
+}
+.customers-block {
+display: inline-block;
+text-align: center;
+width: 50%;
+float: left;
+}
+.customers-img {
+width: 400px;
+height: 261px;
+margin-bottom: 50px;
+float: left;
+}
+
+</style>
+
+<div class="left-ads-display col-lg-8">
+        <div class="row">
+           <div class="desc1-left col-md-6">
+                 <img src="{{ director.image.url }}" class="img-fluid" alt="">
+           </div>
+
+            <div class="desc1-right col-md-6 pl-lg-4">
+                <h3 class="editContent">
+                    <font size = 20 >{{ director.name }} {{director.surname}} </font>
+                </h3>
+                <h5 class="editContent" align="left"></h5>
+                <p align="left">
+                    <h1 align="left"><font size = 6> О Режисере </font></h1>
+
+                        <span> <p align="left"> <b>
+                            Карьера:</b> {{ director.career }}
+                        </p></span>
+                        <span> <p align="left"> <b> Рост:
+                            :</b> {{ director.growth }}
+                        </p></span>
+                        <span> <p align="left"> <b>
+                            Дата рождения:</b> {{ director.year}} {{ director.month}} {{director.year}}, {{director.age}}
+                        </p></span>
+
+                    <li style="list-style: none">
+                        <span> <p align="left"> <b>Место рождения:</b> {{director.place}}
+
+                        </p></span>
+                    </li>
+                    <li style="list-style: none">
+                        <span> <p align="left"> <b>Жанры:</b>
+                            {{director.genres}}
+                        </p>
+                        </span>
+                    </li>
+                                    <li style="list-style: none">
+                        <span> <p align="left"> <b>Супруг/Супруга:</b>
+                            {{director.spouse}}
+                        </p>
+                        </span>
+                    </li>
+                    <li style="list-style: none"><span> <p align="left"> <b>Всего фильмов:</b>
+                        {{director.total_movies}}
+
+                    </p></span>
+                    </li>
+
+
+                </p>
+
+        </div>
+                    </div>
+            </div>
+
+
+
+
+{% endblock %}

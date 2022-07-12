@@ -1,0 +1,195 @@
+<!doctype html>
+{% load static %}
+<html lang="ru" class="h-100">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+
+    <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}" > -->
+    <link href="/docs/5.2/dist/css/bootstrap.min.css?v=52" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <title>{% block title %}{% endblock %}</title>
+
+	<!-- Favicons -->
+    <!--
+	<link rel="apple-touch-icon" href="/docs/5.2/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+	<link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+	<link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+	<link rel="manifest" href="/docs/5.2/assets/img/favicons/manifest.json">
+	<link rel="mask-icon" href="/docs/5.2/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
+	<link rel="icon" href="/docs/5.2/assets/img/favicons/favicon.ico">
+	<meta name="theme-color" content="#7952b3">
+    -->
+
+
+
+<style>
+
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+.gradient-text {
+  font-family: 'Rubik One', sans-serif;
+  font-size: 30px;
+  text-transform: uppercase;
+  background: linear-gradient(45deg, #c67f16 33%, #ecce80 66%, #c67f16);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #c67f16;
+  display: table;
+  margin: 20px auto;
+}
+
+      .gradient-all {
+      font-size: 1em;
+      background: linear-gradient(135deg, #c67f16 20%, #ecce80 70%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      padding: 0.3em 0.6em ;
+      border: 3px solid transparent;
+      border-image: linear-gradient(135deg, #c67f16 20%, #ecce80 70%);
+      border-image-slice: 1;
+      }
+
+.rating {
+    overflow: hidden;
+    vertical-align: bottom;
+    display: inline-block;
+    width: 155px;
+    height: 30px;
+}
+
+.rating > input {
+    opacity: 0;
+    margin-right: -100%;
+}
+
+.rating > label {
+    position: relative;
+    display: block;
+    float: right;
+    background: url('../images/star-off-big.png');
+    background-size: 30px 30px;
+}
+
+.rating > label:before {
+    display: block;
+    opacity: 0;
+    content: '';
+    width: 30px;
+    height: 30px;
+    background: url('../images/star-on-big.png');
+    background-size: 30px 30px;
+    transition: opacity 0.2s linear;
+}
+
+.rating > label:hover:before, .rating > label:hover ~ label:before, .rating:not(:hover) > :checked ~ label:before {
+    opacity: 1;
+}
+
+h6{
+font-family: Verdana, sans-serif;
+}
+
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <link href="cover.css" rel="stylesheet">
+    <link rel="icon" type="image" href="https://sun9-60.userapi.com/impf/hiWcBvmL39Impuoapcf4Yi0QPX0jwafUs9TgUg/rqX_UNeTKC4.jpg?size=157x115&quality=95&sign=3e31429c132e31924a9b20edcf6caac6&type=album">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+
+
+
+
+  </head>
+  <body class="d-flex h-100 text-center text-white bg-black">
+
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <header class="mb-auto">
+    <div class="container-fluid d-flex align-items-center">
+       <h1 class="d-flex align-items-center fs-4 text-warning mb-0">
+      <img src="https://sun9-60.userapi.com/impf/hiWcBvmL39Impuoapcf4Yi0QPX0jwafUs9TgUg/rqX_UNeTKC4.jpg?size=157x115&quality=95&sign=3e31429c132e31924a9b20edcf6caac6&type=album" width="38" height="30" class=" me-3" alt="Bootstrap">
+      <p class="gradient-text">Movie Time</p>
+    </h1>
+
+    <!--<a href="/docs/5.2/examples/cheatsheet-rtl/" class="ms-auto link-light" hreflang="ar">RTL cheatsheet</a>-->
+
+      <!--<nav class="nav nav-masthead justify-content-center float-md-end">
+        <a class="me-3 py-2 text-white text-decoration-none" aria-current="page" href="{% url 'home'%}">Главная</a>
+        <a class="me-3 py-2 text-white text-decoration-none" href="{% url 'films'%}">Фильмы</a>
+        <a class="me-3 py-2 text-white text-decoration-none" href="{% url 'cartoons'%}">Сериалы</a>
+        <a class="me-3 py-2 text-white text-decoration-none" href="{% url 'admin'%}">Вход</a>
+      </nav>-->
+
+        <a class="ms-auto link-light text-decoration-none" hreflang="ar" href="{% url 'home'%}"><h6>Главная</h6></a>
+
+        {% for category in category_list %}
+        {% endfor %}
+        <a class="ms-auto link-light text-decoration-none" hreflang="ar" href="{% url 'films' %}"><h6>Фильмы</h6></a>
+
+        <a class="ms-auto link-light text-decoration-none" hreflang="ar" href="{% url 'series'%}"><h6>Сериалы</h6></a>
+        <a class="ms-auto link-light text-decoration-none" hreflang="ar" href="{% url 'cartoons'%}"><h6>Мультфильмы</h6></a>
+<!---- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
+
+
+
+<div class="ms-auto link-light text-decoration-none text-warning search-bar w3layouts-newsletter">
+
+    <form action="{% url 'detailed_description ' %}" method="get" class="ms-auto link-light text-decoration-none editContent">
+        <input type="search" placeholder="Введите название..." name="q" class="d-flex align-items-center fs-6 text-warning mb-1 me+6 bg-#ecce80" required="">
+        <!--<button class="btn btn-outline-warning" type="submit">Search</button>-->
+
+            <span class="fa fa-search" aria-hidden="true"></span>
+
+        </button>
+
+    </form>
+
+
+</div>
+
+
+        <a class="gradient-all ms-auto link-light text-decoration-none text-warning"  href="{% url 'admin'%}"><h6>Зарегистрироваться</h6></a>
+
+
+
+    </div>
+  </header>
+
+<div class="row">
+   <div class="col-1"></div>
+   <div class="col-10">
+
+       {% block content %}
+       {% endblock %}
+
+   </div>
+   <div class="col-1"></div>
+</div>
+</div>
+<script src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html>

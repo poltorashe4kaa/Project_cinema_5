@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+
+
+.customers-wrap {
+margin-bottom: 100px;
+}
+.customers-wrap::after {
+content: '';
+display: table;
+clear: both;
+}
+.customers-block {
+display: inline-block;
+text-align: center;
+width: 50%;
+float: left;
+}
+.customers-img {
+width: 400px;
+height: 261px;
+margin-bottom: 50px;
+float: left;
+}
+
+</style>
+
+
+<div class="left-ads-display col-lg-8">
+        <div class="row">
+           <div class="desc1-left col-md-6">
+                 <img src="{{ actor.image.url }}" class="img-fluid" alt="">
+           </div>
+
+            <div class="desc1-right col-md-6 pl-lg-4">
+                <h3 class="editContent">
+                    <font size = 20 >{{ actor.name }} {{actor.surname}} </font>
+                </h3>
+                <h5 class="editContent" align="left"></h5>
+                <p align="left">
+                    <h1 align="left"><font size = 6> Об актере </font></h1>
+
+                        <span> <p align="left"> <b>
+                            Карьера:</b> {{ actor.career }}
+                        </p></span>
+                        <span> <p align="left"> <b> Рост:
+                            :</b> {{ actor.growth }}
+                        </p></span>
+                        <span> <p align="left"> <b>
+                            Дата рождения:</b> {{ actor.year}} {{ actor.month}} {{actor.year}}, {{actor.age}}
+                        </p></span>
+
+                    <li style="list-style: none">
+                        <span> <p align="left"> <b>Место рождения:</b> {{actor.place}}
+
+                        </p></span>
+                    </li>
+                    <li style="list-style: none">
+                        <span> <p align="left"> <b>Жанры:</b>
+                            {{actor.genres}}
+                        </p>
+                        </span>
+                    </li>
+                                    <li style="list-style: none">
+                        <span> <p align="left"> <b>Супруг/Супруга:</b>
+                            {{actor.spouse}}
+                        </p>
+                        </span>
+                    </li>
+                    <li style="list-style: none"><span> <p align="left"> <b>Всего фильмов:</b>
+                        {{actor.total_movies}}
+
+                    </p></span>
+                    </li>
+
+
+                </p>
+
+        </div>
+                    </div>
+            </div>
+
+
+
+
+{% endblock %}
